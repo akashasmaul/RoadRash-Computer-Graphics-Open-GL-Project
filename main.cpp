@@ -3,28 +3,46 @@
 #include<math.h>
 #define PI 3.141516
 
-GLfloat positionx = 0.1f;
-GLfloat positiony = -0.1f;
-GLfloat speed = 0.0158f;
-GLfloat scale=0.5f;
-GLfloat pls=0.5f;
+GLfloat position = 0.5f;
+GLfloat mov=0.0f;
+GLfloat mov2=0.0f;
+GLfloat speed = 0.06558f;
+GLfloat speedC1=0.01f;
 
 void Run(int value) {
 
-    if(positionx <-0.7 )
-        positionx = 0.1f;
-       // scale=0.5f;
-        positiony= -0.1f;
+
+    if(position >10 )
+        position = 0.5f;
 
 
-    positionx -= speed;
-    positiony -= speed;
-    //scale -=pls;
+
+
+    position += speed;
+
 
 glutPostRedisplay();//display refresh and render
 glutTimerFunc(100, Run, 0);
 }
+void moveCloud(int value)
+{
+    if(mov >1.5)
+        mov=-1.0f;
 
+  mov +=speedC1;
+
+  glutPostRedisplay();
+  glutTimerFunc(100,moveCloud,0);
+}
+void moveCloud2(int value)
+{
+    if(mov2 <-1.5)
+        mov2=1.0f;
+
+  mov2 -=speedC1;
+  glutPostRedisplay();
+  glutTimerFunc(100,moveCloud2,0);
+}
 void sand()
 {
 glBegin (GL_POLYGON);//left side and area
@@ -76,7 +94,291 @@ glEnd();
 }
 void cloud()
 {
+glBegin (GL_POLYGON);//Cloud 1
+glColor3ub (153,240,254);
+glVertex2f(-0.639583f,0.637037f);
+glVertex2f(-0.584375f,0.653704f);
+glVertex2f(-0.555208f,0.657407f);
+glVertex2f(-0.534375f,0.651852f);
+glVertex2f(-0.521875f,0.644444f);
+glVertex2f(-0.515625f,0.633333f);
+glVertex2f(-0.511458f,0.618519f);
+glVertex2f(-0.510417f,0.607407f);
+glEnd();
 
+glPushMatrix();
+glTranslatef(mov,0.0f,0.0f);
+glBegin (GL_POLYGON);//Cloud 2 part 1
+glColor3ub (153,240,254);
+glVertex2f(-0.477083f,0.603704f);
+glVertex2f(-0.41875f,0.618519f);
+glVertex2f(-0.386458f,0.622222f);
+glVertex2f(-0.363542f,0.612963f);
+glVertex2f(-0.346875f,0.601852f);
+glVertex2f(-0.328125f,0.587037f);
+glVertex2f(-0.325f,0.577778f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 2
+glVertex2f(-0.325f,0.577778f);
+glVertex2f(-0.303125f,0.622222f);
+glVertex2f(-0.2875f,0.640741f);
+glVertex2f(-0.26875f,0.651852f);
+glVertex2f(-0.251042f,0.651852f);
+glVertex2f(-0.238542f,0.644444f);
+glVertex2f(-0.222917f,0.611111f);
+glVertex2f(-0.216667f,0.561111f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 3
+glVertex2f(-0.216667f,0.561111f);
+glVertex2f(-0.20625f,0.585185f);
+glVertex2f(-0.19375f,0.607407f);
+glVertex2f(-0.179167f,0.62963f);
+glVertex2f(-0.163542f,0.651852f);
+glVertex2f(-0.151042f,0.672222f);
+glVertex2f(-0.136458f,0.688889f);
+glVertex2f(-0.125f,0.701852f);
+glVertex2f(-0.111458f,0.716667f);
+glVertex2f(-0.096875f,0.72963f);
+glVertex2f(-0.0802083f,0.740741f);
+glVertex2f(-0.0666667f,0.744444f);
+glVertex2f(-0.0541667f,0.742593f);
+glVertex2f(-0.04375f,0.737037f);
+glVertex2f(-0.0364583f,0.725926f);
+glVertex2f(-0.0322917f,0.709259f);
+glVertex2f(-0.03125f,0.688889f);
+glVertex2f(-0.0333333f,0.67037f);
+glVertex2f(-0.0354167f,0.653704f);
+glVertex2f(-0.0385417f,0.635185f);
+glVertex2f(-0.04375f,0.618519f);
+glVertex2f(-0.0489583f,0.601852f);
+glVertex2f(-0.0552083f,0.583333f);
+glVertex2f(-0.0614583f,0.568519f);
+glVertex2f(-0.065625f,0.555556f);
+glVertex2f(-0.0697917f,0.546296f);
+glVertex2f(-0.0697917f,0.537037f);
+
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 4
+glVertex2f(-0.0697917f,0.537037f);
+glVertex2f(-0.0625f,0.559259f);
+glVertex2f(-0.05625f,0.575926f);
+glVertex2f(-0.0489583f,0.590741f);
+glVertex2f(-0.0395833f,0.605556f);
+glVertex2f(-0.03125f,0.618519f);
+glVertex2f(-0.0208333f,0.62963f);
+glVertex2f(-0.0114583f,0.642593f);
+glVertex2f(-0.00104167f,0.65f);
+glVertex2f(0.0135417f,0.659259f);
+glVertex2f(0.028125f,0.661111f);
+glVertex2f(0.040625f,0.659259f);
+glVertex2f(0.053125f,0.655556f);
+glVertex2f(0.0645833f,0.644444f);
+glVertex2f(0.0729167f,0.631481f);
+glVertex2f(0.0791667f,0.62037f);
+glVertex2f(0.0864583f,0.601852f);
+glVertex2f(0.090625f,0.581481f);
+glVertex2f(0.09375f,0.561111f);
+glVertex2f(0.0958333f,0.542593f);
+glVertex2f(0.096875f,0.525926f);
+glVertex2f(0.0979167f,0.509259f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 5
+glVertex2f(0.096875f,0.509259f);
+glVertex2f(0.140625f,0.522222f);
+glVertex2f(0.164583f,0.52037f);
+glVertex2f(0.197917f,0.509259f);
+glVertex2f(0.233333f,0.487037f);
+
+glEnd();
+glPopMatrix();
+
+glPushMatrix();
+glTranslatef(mov2,0.0f,0.0f);
+glBegin (GL_POLYGON);//Cloud 3 part 1
+glVertex2f(0.378125f,0.674074f);
+glVertex2f(0.388542f,0.683333f);
+glVertex2f(0.403125f,0.688889f);
+glVertex2f(0.433333f,0.688889f);
+glVertex2f(0.453125f,0.683333f);
+glVertex2f(0.463542f,0.672222f);
+glVertex2f(0.467708f,0.662963f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 3 part 2
+glVertex2f(0.467708f,0.662963f);
+glVertex2f(0.477083f,0.687037f);
+glVertex2f(0.490625f,0.709259f);
+glVertex2f(0.50625f,0.733333f);
+glVertex2f(0.520833f,0.75f);
+glVertex2f(0.535417f,0.764815f);
+glVertex2f(0.553125f,0.774074f);
+glVertex2f(0.571875f,0.775926f);
+glVertex2f(0.590625f,0.772222f);
+glVertex2f(0.604167f,0.764815f);
+glVertex2f(0.617708f,0.751852f);
+glVertex2f(0.630208f,0.735185f);
+glVertex2f(0.641667f,0.711111f);
+glVertex2f(0.648958f,0.688889f);
+glVertex2f(0.654167f,0.664815f);
+glVertex2f(0.657292f,0.640741f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 3 part 3
+glVertex2f(0.657292f,0.640741f);
+glVertex2f(0.663542f,0.65f);
+glVertex2f(0.676042f,0.653704f);
+glVertex2f(0.695833f,0.653704f);
+glVertex2f(0.727083f,0.646296f);
+glVertex2f(0.748958f,0.638889f);
+glVertex2f(0.76875f,0.627778f);
+
+glEnd();
+glPopMatrix();
+
+
+
+
+glPushMatrix();
+glTranslatef(mov,0.0f,0.0f);
+glTranslatef(0.5f,0.2f,0.0f);
+glBegin (GL_POLYGON);//Cloud 4 part 1
+glVertex2f(0.378125f,0.674074f);
+glVertex2f(0.388542f,0.683333f);
+glVertex2f(0.403125f,0.688889f);
+glVertex2f(0.433333f,0.688889f);
+glVertex2f(0.453125f,0.683333f);
+glVertex2f(0.463542f,0.672222f);
+glVertex2f(0.467708f,0.662963f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 4 part 2
+glVertex2f(0.467708f,0.662963f);
+glVertex2f(0.477083f,0.687037f);
+glVertex2f(0.490625f,0.709259f);
+glVertex2f(0.50625f,0.733333f);
+glVertex2f(0.520833f,0.75f);
+glVertex2f(0.535417f,0.764815f);
+glVertex2f(0.553125f,0.774074f);
+glVertex2f(0.571875f,0.775926f);
+glVertex2f(0.590625f,0.772222f);
+glVertex2f(0.604167f,0.764815f);
+glVertex2f(0.617708f,0.751852f);
+glVertex2f(0.630208f,0.735185f);
+glVertex2f(0.641667f,0.711111f);
+glVertex2f(0.648958f,0.688889f);
+glVertex2f(0.654167f,0.664815f);
+glVertex2f(0.657292f,0.640741f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 4 part 3
+glVertex2f(0.657292f,0.640741f);
+glVertex2f(0.663542f,0.65f);
+glVertex2f(0.676042f,0.653704f);
+glVertex2f(0.695833f,0.653704f);
+glVertex2f(0.727083f,0.646296f);
+glVertex2f(0.748958f,0.638889f);
+glVertex2f(0.76875f,0.627778f);
+
+glEnd();
+glPopMatrix();
+
+
+
+
+glPushMatrix();
+glTranslatef(mov2,0.0f,0.0f);
+glTranslatef(0.03f,-0.5f,0.0f);
+glBegin (GL_POLYGON);//Cloud 2 part 1
+glColor3ub (153,240,254);
+glVertex2f(-0.477083f,0.603704f);
+glVertex2f(-0.41875f,0.618519f);
+glVertex2f(-0.386458f,0.622222f);
+glVertex2f(-0.363542f,0.612963f);
+glVertex2f(-0.346875f,0.601852f);
+glVertex2f(-0.328125f,0.587037f);
+glVertex2f(-0.325f,0.577778f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 2
+glVertex2f(-0.325f,0.577778f);
+glVertex2f(-0.303125f,0.622222f);
+glVertex2f(-0.2875f,0.640741f);
+glVertex2f(-0.26875f,0.651852f);
+glVertex2f(-0.251042f,0.651852f);
+glVertex2f(-0.238542f,0.644444f);
+glVertex2f(-0.222917f,0.611111f);
+glVertex2f(-0.216667f,0.561111f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 3
+glVertex2f(-0.216667f,0.561111f);
+glVertex2f(-0.20625f,0.585185f);
+glVertex2f(-0.19375f,0.607407f);
+glVertex2f(-0.179167f,0.62963f);
+glVertex2f(-0.163542f,0.651852f);
+glVertex2f(-0.151042f,0.672222f);
+glVertex2f(-0.136458f,0.688889f);
+glVertex2f(-0.125f,0.701852f);
+glVertex2f(-0.111458f,0.716667f);
+glVertex2f(-0.096875f,0.72963f);
+glVertex2f(-0.0802083f,0.740741f);
+glVertex2f(-0.0666667f,0.744444f);
+glVertex2f(-0.0541667f,0.742593f);
+glVertex2f(-0.04375f,0.737037f);
+glVertex2f(-0.0364583f,0.725926f);
+glVertex2f(-0.0322917f,0.709259f);
+glVertex2f(-0.03125f,0.688889f);
+glVertex2f(-0.0333333f,0.67037f);
+glVertex2f(-0.0354167f,0.653704f);
+glVertex2f(-0.0385417f,0.635185f);
+glVertex2f(-0.04375f,0.618519f);
+glVertex2f(-0.0489583f,0.601852f);
+glVertex2f(-0.0552083f,0.583333f);
+glVertex2f(-0.0614583f,0.568519f);
+glVertex2f(-0.065625f,0.555556f);
+glVertex2f(-0.0697917f,0.546296f);
+glVertex2f(-0.0697917f,0.537037f);
+
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 4
+glVertex2f(-0.0697917f,0.537037f);
+glVertex2f(-0.0625f,0.559259f);
+glVertex2f(-0.05625f,0.575926f);
+glVertex2f(-0.0489583f,0.590741f);
+glVertex2f(-0.0395833f,0.605556f);
+glVertex2f(-0.03125f,0.618519f);
+glVertex2f(-0.0208333f,0.62963f);
+glVertex2f(-0.0114583f,0.642593f);
+glVertex2f(-0.00104167f,0.65f);
+glVertex2f(0.0135417f,0.659259f);
+glVertex2f(0.028125f,0.661111f);
+glVertex2f(0.040625f,0.659259f);
+glVertex2f(0.053125f,0.655556f);
+glVertex2f(0.0645833f,0.644444f);
+glVertex2f(0.0729167f,0.631481f);
+glVertex2f(0.0791667f,0.62037f);
+glVertex2f(0.0864583f,0.601852f);
+glVertex2f(0.090625f,0.581481f);
+glVertex2f(0.09375f,0.561111f);
+glVertex2f(0.0958333f,0.542593f);
+glVertex2f(0.096875f,0.525926f);
+glVertex2f(0.0979167f,0.509259f);
+glEnd();
+
+glBegin (GL_POLYGON);//Cloud 2 part 5
+glVertex2f(0.096875f,0.509259f);
+glVertex2f(0.140625f,0.522222f);
+glVertex2f(0.164583f,0.52037f);
+glVertex2f(0.197917f,0.509259f);
+glVertex2f(0.233333f,0.487037f);
+
+glEnd();
+glPopMatrix();
 
 }
 void sky()
@@ -747,9 +1049,13 @@ glEnd();
 void car()
 {
 glPushMatrix();
-glTranslatef(positionx,positionx,0.0f);
-glTranslatef(0.1f,-0.1f, 0.0f);
-glScalef(scale,scale,0.0f);
+//glRotatef(90.0f,0.0f,0.0f,0.0f);
+glTranslatef(0.180208f,-0.283704f,0.0f);
+
+glScalef(position,position,0.0f);
+glScalef(0.2f,0.2f,0.0f);
+//if(position > 6)
+//        glTranslatef(0.0677083f,-0.851852f,0.0f);
 //car
 glBegin (GL_POLYGON);//Car glass frame
 glColor3ub (225,55,50);
@@ -1129,8 +1435,16 @@ int main(int argc, char** argv)
     glutCreateWindow("Racing Track"); //Create a window with the given title
     glutDisplayFunc(display);// register display callback handler for window re-paint
     glutTimerFunc(100, Run, 0);//recursion start from here
+    glutTimerFunc(100, moveCloud, 0);//recursion start from here
+    glutTimerFunc(100, moveCloud2, 0);//recursion start from here
     glutMainLoop(); //Enter the event processing loop
 
+
     return 0;
+
+
+
+
+
 
 }

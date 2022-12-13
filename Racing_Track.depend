@@ -251,20 +251,14 @@
 	"draw.h"
 	<math.h>
 
-1670866117 source:c:\users\88013\desktop\cgfinal\main.cpp
+1670950538 source:c:\users\88013\desktop\cgfinal\main.cpp
 	<windows.h>
-	<mmsystem.h>
 	<GL/glut.h>
 	<math.h>
 
-1670889070 source:c:\users\ak4as\desktop\cgfinal\main.cpp
+1670888585 source:c:\users\ak4as\desktop\cgfinal\main.cpp
 	<windows.h>
 	<mmsystem.h>
-	<GL/glut.h>
-	<math.h>
-
-1670944195 source:c:\users\ak4as\desktop\hello\roadrash\racingtrack\main.cpp
-	<windows.h>
 	<GL/glut.h>
 	<math.h>
 
